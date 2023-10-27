@@ -13,3 +13,12 @@ after_success:
   - docker build -t murtazadocker/multi-nginx ./nginx
   - docker build -t murtazadocker/multi-server ./server
   - docker build -t murtazadocker/multi-worker ./worker
+# Log in to the docker CLI
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Take those images and push to doker hub
+  - docker push murtazadocker/multi-client
+  - docker push murtazadocker/multi-nginx
+  - docker push murtazadocker/multi-server
+  - docker push murtazadocker/multi-worker
+
